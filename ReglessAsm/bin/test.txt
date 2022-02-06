@@ -1,0 +1,12 @@
+# REGLESS Program example
+# adds two values together
+# and prints the result
+
+# Program
+add q_float :num1 :num2
+trap out f_float :num1 q_float
+trap end
+
+# Data
+@num1  qf:50000.2345
+@num2  -qf:60000.0

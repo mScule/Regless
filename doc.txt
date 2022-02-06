@@ -1,0 +1,62 @@
+REGLESS 0.1.0 documentation
+
+Definitions:
+
+  Every word written in snake_case is
+  actual keyword in the REGLESS assembler.
+
+  Words written in SCREAMING_SNAKE_CASE are
+  dynamic values like location pointer calls,
+  and constant values.
+
+  Words encapsulated with arrows have multiple
+  possible values that are separated with '|'
+
+  ADDRESS : 32bit value
+  VALUE   : 8, 16, or 32 bit value
+
+  <size> : s_size | d_size | q_size
+
+  <cast size> : s_cast_uint
+              | s_cast_int
+              | d_cast_uint
+              | d_cast_int
+              | q_cast_uint
+              | q_cast_int
+              | q_cast_float
+
+  <output format> : f_hex
+                  | f_int
+                  | f_char
+                  | f_float
+
+Instruction implementations:
+
+  Set:
+    set ADDRESS mem <size> ADDRESS
+    set ADDRESS val <size> VALUE
+
+  Trap:
+    trap end 
+    trap <output format> ADDRESS <cast size>
+
+  Push: push ADDRESS
+  Pop:  pop ADDRESS
+
+  Jump:   jump ADDRESS
+  Branch: branch ADDRESS
+
+  Add: add <cast size> <size> ADDRESS <size> ADDRESS
+  Sub: sub <cast size> <size> ADDRESS <size> ADDRESS
+  Mul: mul <cast size> <size> ADDRESS <size> ADDRESS
+  Div: div <cast size> <size> ADDRESS <size> ADDRESS
+  Rem: rem <cast size> <size> ADDRESS <size> ADDRESS
+
+  Cast: cast <cast size> ADDRESS <cast size> ADDRESS
+
+  Eq:      eq <size> ADDRESS <size> ADDRESS
+  Not:     not <size> ADDRESS <size> ADDRESS
+  S:       smaller <size> ADDRESS <size> ADDRESS
+  L:       larger <size> ADDRESS <size> ADDRESS
+  S or eq: smaller-or-eq <size> ADDRESS <size> ADDRESS
+  L or eq: larger-or-eq <size> ADDRESS <size> ADDRESS
