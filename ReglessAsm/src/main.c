@@ -266,12 +266,12 @@ void write_32bit_float(char sign) {
 
     // Writing
     if(sign) {
-        unsigned char first = num.split[0];
-        first |= 1 << 7;
-        write(first);
+        write(num.split[0]);
         write(num.split[1]);
         write(num.split[2]);
-        write(num.split[3]);
+        uint8_t flipped = num.split[3];
+        flipped |= 1 << 7;
+        write(flipped);
     } else {
         write(num.split[0]);
         write(num.split[1]);
